@@ -80,7 +80,7 @@ public class StudentProfile {
         
         Scanner sc = new Scanner(System.in);
         System.out.println("The Student Profile Portal");
-        
+         Addaction aa = new Addaction();
         while(true){
         
                  System.out.println(
@@ -91,6 +91,49 @@ public class StudentProfile {
                  "\n Preaa 5 for Updating Profile \n"+
                  "\n Preaa 6 for Exiting the Profile \n"
                  );
+                 
+                 System.out.println("Please Provide Input - ");
+                 int i = sc.nextInt();
+                 
+                 switch(i){
+                     case 1:
+                         System.out.println("Add Profile");
+                         System.out.println("Enter Name");
+                         String name = sc.next();
+                         System.out.println("Enter Domain");
+                         String domain = sc.next();
+                         System.out.println("Enter Address");
+                         String address = sc.next();
+                    
+                    StudentProfile sp = new StudentProfile(name, domain, address);
+                    
+                    boolean valid = aa.add(sp);
+                         if(valid==true)
+                             System.out.println("**Profile Added**");
+                         else
+                             System.out.println("**Problem Occured**");
+                         break;
+                             
+                     case 2:
+                         System.out.println("Show");
+                         break;
+                     case 3:
+                         System.out.println("Display");
+                         break;
+                     case 4:
+                         System.out.println("Delet");
+                         break;
+                     case 5:
+                         System.out.println("Update");
+                         break;
+                     case 6:
+                         System.out.println("Exit");
+                         System.exit(0);
+                         break;
+                     default:
+                         System.out.println("Invalid");
+                         
+                 }
         }
     }
     
