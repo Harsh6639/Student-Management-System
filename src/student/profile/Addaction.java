@@ -102,4 +102,36 @@ public class Addaction {
        }
        return check;
     }
+    public boolean update(int id, String neww, int se, StudentProfile sp){
+        boolean check =false;
+        try {
+        
+            if(se==1){
+                Connection con = DB.getCon();
+                String query = "update profile set domain=? where id=?";
+                PreparedStatement p = con.prepareStatement(query);
+                p.setString(1, neww);
+                p.setInt(2,id);
+       
+                p.executeUpdate();
+                check = true;
+            }
+            else if(se==2){
+                Connection con = DB.getCon();
+                String query = "update profile set address=? where id=?";
+                PreparedStatement p = con.prepareStatement(query);
+                p.setString(1, neww);
+                p.setInt(2,id);
+       
+                p.executeUpdate();
+                check = true;
+            }
+            
+        } 
+        catch (Exception e) {
+            System.out.println("e");
+        }
+        return check;
+    
+    }
 }

@@ -131,8 +131,8 @@ public class StudentProfile {
                          break;
                      case 4:
                          System.out.println("Delete");
-                         int de = sc.nextInt();
                          System.out.println("Enter ID to delete ->");
+                         int de = sc.nextInt();
                          boolean validDID = aa.delete(de);
                          if(validDID==true)
                              System.out.println("Deleted Successfully");
@@ -141,7 +141,21 @@ public class StudentProfile {
                          break;
                      case 5:
                          System.out.println("Update");
+                          System.out.println(
+                          "Press 1 to update domain \n"+
+                          "Press 2 to update address"
+                          );
+                          int se = sc.nextInt();
                           
+                          if(se==1){
+                              System.out.println("Enter ID ");
+                              int idd = sc.nextInt();
+                              System.out.println("Enter new Domain");
+                              String ddomain = sc.next();
+                              StudentProfile spp = new StudentProfile();
+                              spp.setdomain(ddomain);
+                              aa.update(idd,ddomain,se,spp);
+                          }
                          break;
                      case 6:
                          System.out.println("Exit");
