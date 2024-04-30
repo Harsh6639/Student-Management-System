@@ -4,6 +4,7 @@
  */
 package student.profile;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -75,7 +76,7 @@ public class StudentProfile {
         
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
      
         
         Scanner sc = new Scanner(System.in);
@@ -98,33 +99,49 @@ public class StudentProfile {
                  switch(i){
                      case 1:
                          System.out.println("Add Profile");
-                         System.out.println("Enter Name");
-                         String name = sc.next();
-                         System.out.println("Enter Domain");
-                         String domain = sc.next();
-                         System.out.println("Enter Address");
-                         String address = sc.next();
+                    System.out.println("Enter Name");
+                    String name = sc.next();
+                    System.out.println("Enter Domain");
+                    String domain = sc.next();
+                    System.out.println("Enter Address");
+                    String address = sc.next();
                     
                     StudentProfile sp = new StudentProfile(name, domain, address);
                     
                     boolean valid = aa.add(sp);
-                         if(valid==true)
-                             System.out.println("**Profile Added**");
-                         else
-                             System.out.println("**Problem Occured**");
-                         break;
+                    
+                    if(valid==true)
+                        System.out.println("** Profile Added **");
+                    else
+                        System.out.println("** Problem Occured **");
+                    break;
                              
                      case 2:
-                         System.out.println("Show");
+                         System.out.println("Display");
+                         aa.display();
                          break;
                      case 3:
                          System.out.println("Display");
+                         int in = sc.nextInt();
+                         System.out.println("Enter ID ->");
+                         boolean validID =aa.displayID(in);
+                         if(validID==false)
+                             
+                             System.out.println("Profile with this ID not available");
                          break;
                      case 4:
-                         System.out.println("Delet");
+                         System.out.println("Delete");
+                         int de = sc.nextInt();
+                         System.out.println("Enter ID to delete ->");
+                         boolean validDID = aa.delete(de);
+                         if(validDID==true)
+                             System.out.println("Deleted Successfully");
+                         else
+                             System.out.println("******Problem Occured*****");
                          break;
                      case 5:
                          System.out.println("Update");
+                          
                          break;
                      case 6:
                          System.out.println("Exit");
